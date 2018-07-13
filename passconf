@@ -1,0 +1,17 @@
+#! usr/bin/python3
+
+
+with open('/etc/hostapd/hostapd.conf', "r") as f:
+  f_contents = f.readlines()
+  resultsDict = {}
+  for line in f_contents:
+    key,value = line.split("=")
+    resultsDict[key] = value
+    if key =="ssid":
+      print (value)
+
+pwd = input("Please input password ?")
+#print("Your password is " + pwd)
+
+f.close()
+

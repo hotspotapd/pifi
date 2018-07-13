@@ -1,0 +1,33 @@
+
+#! usr/bin/python3
+
+def change_password(newpwd):
+ with open('/etc/hostapd/hostapd.conf', "r") as f:
+   f_contents = f.readlines()
+   resultsDict = {}
+   for line in f_contents:
+     key,value = line.split("=")
+     resultsDict[key] = value
+     if key =="wpa_passphrase":
+       resultsDict[key] =newpwd + "\n"
+   f.close()
+   return resultsDict
+
+
+
+
+def print_file(result):
+ newfile= open('/etc/hostapd/hostapd.conf' , 'w')   
+ for key in result.keys():
+    s = key + "=" + result[key] 
+    newfile.write(s) 
+ newfile.close()
+
+pwd = input("Please input password ? ")
+#print("Your password is " + pwd)
+
+
+
+result = change_password(pwd)
+
+print_file(result)

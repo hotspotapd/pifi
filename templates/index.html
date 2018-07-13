@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <style>
+      /* .row div{padding:20px 10px; border:1px solid;} */
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-lg bg-primary navbar-inverse">
+      <div class="container">
+        <button class="navbar-toggler" data-toggle="collapse"data-target="#mainNav">
+            <span class="navbar-toggler-icon">Menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active"href="#">Home</a>
+            <a class="nav-item nav-link active"href="#">Contact</a>
+            <a class="nav-item nav-link active"href="#">Services</a>
+            <a class="nav-item nav-link active"href="#">About</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+      <div class="jumbotron bg-info jumbotron-fluid text-white text-center" style="background:#aaa">
+        <div class="container-fluid">
+          <h1 class="display-1"><strong>Welcome to PiSpot</strong></h1>
+          <p class="lead">We Inform, We Entertain...</p>
+        </div>
+      </div>
+
+<!--
+        <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+      </div> -->
+      
+      
+        <div class ="container">
+         <form action="index.html"method="post">
+      <label for="name">Change SSID: Pispot </label>
+    </form>
+    
+    </div>
+    
+    <fieldset>
+    
+    </fieldset>
+    
+    
+    <div class ="container">
+    <h3>Password change status: {{password_message}}</h3>
+    <form action="{{url_for('changepwd')}}" method="post">
+      <label for="name">Enter previous passoword:</label>
+      <input type="text" name="pwd" value= {{ request.form.pwd }}>
+      
+      <label for="name"> Enter new password:</label>
+      <input type="text" name="reset_pwd" value= {{ request.form.reset_pwd }}>
+      <input type="submit">
+    </form>
+    
+    </div>
+       
+          
+           <fieldset> </fieldset>
+          
+    <div class ="container">
+    <form action="{{url_for('changepwd')}}" method="post">
+      
+      
+    </form>
+    
+    </div>    
+         
+     
+   
+      
+        
+          
+        <h2 class="display-4 text-center py-5 m-4">Meet the Speakers</h2>
+        <nav class="nav justify-content-center nav-pills flex-column  flex-md-row">
+          <a class="nav-link active" href="#sack" data-toggle="tab">Prah</a>
+          <a class="nav-link" href="#nat" data-toggle="tab">Prah</a>
+          <a class="nav-link" href="#jane" data-toggle="tab">Annet</a>
+          <a class="nav-link" href="#sam" data-toggle="tab">Gabi</a>
+          
+        </nav>
+
+        <div class="tab-content">
+          <div class="tab-pane active"id="sack">
+            <h3>Prah</h3>
+            <p>Prah is the world’s most popular framework for building responsive,<span data-toggle="tooltip" title="You can also follow us on twitter" class="text-success" data-placement="top"> mobile-first sites</span> and applications. Inside you’ll find high quality HTML, CSS, and JavaScript to make starting any project easier than ever.
+Here’s how to quickly get started with the Bootstrap CDN and a template starter page.</p>
+          </div>
+          <div class="tab-pane"id="nat">
+            <h3>Annet</h3>
+            <p>Annet is the world’s most popular framework for building responsive, mobile-first sites and applications. Inside you’ll find high quality HTML, CSS, and JavaScript to make starting any project easier than ever.
+Here’s how to quickly get started with the Bootstrap CDN and a template starter page.</p>
+          </div>
+        <div class="tab-pane"id="jane">
+          <h3>Gabi</h3>
+          <p>Gabi is the world’s most popular framework for building responsive, mobile-first sites and applications. Inside you’ll find high quality HTML, CSS, and JavaScript to make starting any project easier than ever.
+Here’s how to quickly get started with the Bootstrap CDN and a template starter page.</p>
+        </div>
+    </div>
+    
+    
+    
+    
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script>
+      $(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+
+  </body>
+</html>
