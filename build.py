@@ -1,10 +1,9 @@
 #! usr/bin/python3
 
-from flask import Flask, render_template, request
-from passcha import get_password
+from flask import Flask, render_template, request, url_for
+from passcha import get_password, change_ssid, read_config
 
 global resultsDict
-resultsDict = {}
 
 app = Flask(__name__)
 
@@ -12,26 +11,32 @@ app = Flask(__name__)
 def index():
   return render_template("index.html")   
  
-@app.route('/changepwd', methods = ['POST'])
+@app.route('/changepwd', methods = ['POST','GET'])
 def changepwd():
   if request.method == 'POST':
     x = request.form['pwd']
     y = request.form['reset_pwd']
-    outcome, results = get_password(x,y, resultsDict)
+    is_successful, newDict = get_password(x, y, resultsDict)
     global resultsDict
-    resultsDict = results
-    if outcome == True:
-      # return "Ok"
-      return render_template("index1.html", data=x, password_message="ok") 
+    resultsDict = newDict
+    if is_successful:
+        return render_template("index.html", data_pass = "Password successfully changed")
     else:
-      return render_template('index.html', password_message = "Wrong password, try Again")
- 
+        return render_template("index.html", data_pass = "Incorrect Password")
+  elif request.method == 'GET':
+    return render_template("index.html")
+
+@app.route('/changessid', methods = ['POST','GET'])
+def changessid():
+  if request.method == 'POST':
+    s = request.form['reset_ssid']
+    newDict = change_ssid(s, resultsDict)
+    global resultsDict
+    resultsDict = newDict
+    return render_template("index.html", data_ssid="SSID successfully changed")
+  elif request.method == 'GET':
+    return render_template("index.html")
+        
 if __name__ == '__main__':
-  with open('/etc/hostapd/hostapd.conf', "r") as f:
-    f_contents = f.readlines()
-    resultsDict = {}
-    for line in f_contents:
-      key,value = line.split("=")
-      resultsDict[key] = value.strip()
-  f.close()
-  app.run(debug=True, host='0.0.0.0')
+    resultsDict = read_config()
+    app.run(debug=True, host='0.0.0.0')

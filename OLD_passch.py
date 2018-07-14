@@ -21,6 +21,16 @@ def print_file(result):
     newfile.write(s) 
  newfile.close()
 
+def newDictValues():
+   with open('/etc/hostapd/hostapd.conf', "r") as f:
+       f_contents = f.readlines()
+   newDict = {}
+   for line in f_contents:
+     key,value = line.split("=")
+     newDict[key] = value
+   f.close()
+   return newDict
+
 
 def get_password(a, b):
    if a == b:

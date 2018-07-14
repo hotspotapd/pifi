@@ -47,7 +47,7 @@
       
         <div class ="container">
          <form action="index.html"method="post">
-      <label for="name">Change SSID: Pispot </label>
+      <label class = "display-3" for="name"> <fieldset>SSID: PISPOT</fieldset> </label>
     </form>
     
     </div>
@@ -58,20 +58,31 @@
     
     
     <div class ="container">
-    <h3>Password change status: {{password_message}}</h3>
+    <h3>Password change status: {{data_pass}}</h3>
     <form action="{{url_for('changepwd')}}" method="post">
       <label for="name">Enter previous passoword:</label>
       <input type="text" name="pwd" value= {{ request.form.pwd }}>
       
       <label for="name"> Enter new password:</label>
       <input type="text" name="reset_pwd" value= {{ request.form.reset_pwd }}>
+      
       <input type="submit">
+      
     </form>
-    
+    <h3>SSID change status: {{data_ssid}}</h3>
+    <form action="{{url_for('changessid')}}" method="post">
+        <label for="name"> Change SSID:</label>
+          <input type="text" name="reset_ssid" value= {{ request.form.reset_ssid }}>
+          <input type="submit">
+        </form>
     </div>
        
           
            <fieldset> </fieldset>
+          
+          
+          
+          
           
     <div class ="container">
     <form action="{{url_for('changepwd')}}" method="post">
